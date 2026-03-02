@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda & Perro</title>
+    <link rel="icon" type="image/png" href="assets/img/panda.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">Imagen Canvas 2D</span>
+        </div>
+    </nav>
+
+    <main class="container flex-grow-1">
+        <div class="row text-center mb-4">
+            <div class="col">
+                <h2>Panda y Perro</h2>
+                <p class="text-muted">Comparativa entre código (Izquierda) e Imagen Original (Derecha)</p>
+            </div>
+        </div>
+
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white font-weight-bold">Resultado Programado (JS)</div>
+                    <div class="card-body p-0 d-flex justify-content-center bg-white">
+                        <canvas id="myCanvas" width="500" height="500"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary text-white font-weight-bold">Imagen Original</div>
+                    <div class="card-body p-0 overflow-hidden">
+                        <img src="assets/img/imagen.jpg" alt="Original" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">Pedro Said Otero</p>
+            <small>Programación Web 2026</small>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
