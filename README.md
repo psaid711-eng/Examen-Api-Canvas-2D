@@ -1,13 +1,31 @@
-# Canvas 2D Art Recreator
+# 🎨 Proyecto: Dibujo con Canvas 2D API
 
-Este proyecto recrea una ilustración digital utilizando exclusivamente la API de **Canvas 2D** de JavaScript.
+Este proyecto es una aplicación web que demuestra el uso de la **API Canvas de HTML5** para recrear una ilustración de un Panda y un Perro Geométrico mediante programación pura en JavaScript.
 
-## Tecnologías Utilizadas
-- HTML5
-- CSS3 (Bootstrap 5)
-- JavaScript Nativo
+## 🚀 Demo
+Puedes ver la aplicación en funcionamiento aquí: [Tu Enlace de GitHub Pages]
 
-## Cómo ejecutar
-1. Clona el repositorio.
-2. Abre `index.html` en tu navegador.
-3. O visita la [GitHub Page](tu-url-aqui).
+## 📋 Características
+- **Dibujo Programático:** Más de 30 figuras básicas (círculos, elipses, rectángulos, arcos y caminos).
+- **Diseño Moderno:** Implementado con **Bootstrap 5**.
+- **Responsive:** Se adapta a diferentes tamaños de pantalla.
+- **Código Documentado:** Funciones separadas por componentes y animales.
+
+## 🛠️ Tecnologías utilizadas
+* **HTML5** (Estructura y Canvas)
+* **CSS3** (Estilos personalizados)
+* **JavaScript** (Lógica de dibujo 2D)
+* **Bootstrap 5** (Framework de diseño)
+
+## 📂 Estructura del Proyecto
+```text
+├── assets/
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   └── main.js
+│   └── img/
+│       └── imagen.jpg
+├── favicon.png
+├── index.html
+└── README.md

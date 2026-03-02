@@ -1,0 +1,23 @@
+/* * Estilos para Proyecto de Arte Canvas 2D
+ */
+
+#myCanvas {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    max-width: 100%;
+    height: auto;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-header {
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+body {
+    background: #fdfdfd !important;
+}

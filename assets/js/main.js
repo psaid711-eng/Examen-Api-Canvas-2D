@@ -1,110 +1,123 @@
 /**
- * APLICACIÓN: Recreación de Ilustración con Canvas 2D
- * DESCRIPCIÓN: Dibujo programático de un panda y un perro en un paisaje.
- * AUTOR: Pedro Said Otero
- * FECHA: 2 de Marzo de 2026
+ * PROYECTO: Recreación Geométrica - Panda y Perro
+ * Descripción: Dibujo mediante Canvas 2D con más de 30 figuras básicas.
+ * Fecha: Marzo 2026
  */
 
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
 
-    drawScene();
-
-    function drawScene() {
-        // --- 1. FONDO (Cielo y Sol) ---
-        ctx.fillStyle = "#A5D8F3"; // Cielo
-        ctx.fillRect(0, 0, 500, 300);
-        
-        ctx.fillStyle = "#FFF200"; // Sol
-        ctx.beginPath();
-        ctx.arc(70, 70, 35, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-
-        // --- 2. PASTO ---
-        ctx.fillStyle = "#69B34C";
-        ctx.fillRect(0, 300, 500, 200);
-
-        // --- 3. DIBUJAR PANDA ---
-        drawPanda(150, 350);
-
-        // --- 4. DIBUJAR PERRO ---
-        drawDog(350, 350);
-
-        // --- 5. DETALLES (Flores) ---
-        drawFlower(50, 420, "red");
-        drawFlower(450, 430, "red");
-        drawFlower(250, 460, "yellow");
-    }
-
-    function drawPanda(x, y) {
-        // Orejas
+    // --- FUNCIÓN 1: PANDA ---
+    function dibujarPanda() {
+        // 1-2. Orejas
         ctx.fillStyle = "black";
-        ctx.beginPath(); ctx.arc(x-60, y-100, 25, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(x+60, y-100, 25, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(110, 175, 25, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(220, 175, 25, 0, Math.PI * 2); ctx.fill();
 
-        // Cuerpo
-        ctx.beginPath();
-        ctx.ellipse(x, y+20, 80, 90, 0, 0, Math.PI*2);
-        ctx.fill();
-        ctx.fillStyle = "white";
-        ctx.beginPath();
-        ctx.ellipse(x, y+30, 60, 70, 0, 0, Math.PI*2);
-        ctx.fill();
-
-        // Cabeza
-        ctx.fillStyle = "white";
+        // 3. Cuerpo / Torso
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(x, y-50, 70, 0, Math.PI*2);
-        ctx.fill();
-        ctx.stroke();
+        ctx.beginPath(); ctx.arc(165, 350, 85, 0, Math.PI * 2); ctx.stroke();
 
-        // Ojos (Manchas)
-        ctx.fillStyle = "black";
-        ctx.beginPath(); ctx.ellipse(x-30, y-60, 20, 25, Math.PI/4, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(x+30, y-60, 20, 25, -Math.PI/4, 0, Math.PI*2); ctx.fill();
-        
-        // Pupilas
+        // 4. Cabeza
         ctx.fillStyle = "white";
-        ctx.beginPath(); ctx.arc(x-25, y-65, 5, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(x+25, y-65, 5, 0, Math.PI*2); ctx.fill();
-    }
+        ctx.beginPath(); ctx.arc(165, 230, 75, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-    function drawDog(x, y) {
-        // Cuerpo (Óvalo café)
-        ctx.fillStyle = "#C19A6B";
-        ctx.beginPath();
-        ctx.ellipse(x, y, 70, 60, 0, 0, Math.PI*2);
-        ctx.fill();
-        ctx.stroke();
+        // 5-6. Manchas Ojos (Separadas un poco más: de 138/192 a 130/200)
+        ctx.fillStyle = "black";
+        ctx.save();
+        ctx.translate(130, 235); ctx.rotate(Math.PI / 6); 
+        ctx.beginPath(); ctx.ellipse(0, 0, 30, 22, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+        ctx.save();
+        ctx.translate(200, 235); ctx.rotate(-Math.PI / 6);
+        ctx.beginPath(); ctx.ellipse(0, 0, 30, 22, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
 
-        // Patas
-        ctx.fillStyle = "#8B4513";
-        ctx.fillRect(x-40, y+20, 20, 60);
-        ctx.fillRect(x+20, y+20, 20, 60);
+        // 7-10. Ojos (Alineados con la nueva separación de las manchas)
+        dibujarOjoPanda(130, 232);
+        dibujarOjoPanda(200, 232);
 
-        // Cabeza
-        ctx.fillStyle = "#C19A6B";
-        ctx.beginPath();
-        ctx.arc(x-20, y-60, 50, 0, Math.PI*2);
-        ctx.fill();
-        ctx.stroke();
-
-        // Hocico y ojos omitidos por brevedad, pero seguirían la misma lógica de arcos...
-    }
-
-    function drawFlower(x, y, color) {
-        ctx.fillStyle = "green";
-        ctx.fillRect(x-2, y, 4, 30); // Tallo
-        ctx.fillStyle = color;
-        // Pétalos simples
-        for(let i=0; i<5; i++) {
-            ctx.beginPath();
-            ctx.arc(x + 10*Math.cos(i*72), y + 10*Math.sin(i*72), 7, 0, Math.PI*2);
-            ctx.fill();
+        function dibujarOjoPanda(x, y) {
+            ctx.fillStyle = "white";
+            ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = "black";
+            ctx.beginPath(); ctx.arc(x, y + 2, 6, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = "white"; 
+            ctx.beginPath(); ctx.arc(x, y - 1, 3, 0, Math.PI * 2); ctx.fill();
         }
+
+        // 11. Nariz
+        ctx.fillStyle = "black";
+        ctx.beginPath(); ctx.arc(165, 255, 8, 0, Math.PI * 2); ctx.fill();
+
+        // 12. Boca
+        ctx.beginPath(); ctx.arc(158, 268, 7, 0, Math.PI); ctx.stroke();
+        ctx.beginPath(); ctx.arc(172, 268, 7, 0, Math.PI); ctx.stroke();
+
+        // 13-14. Brazos
+        ctx.beginPath(); ctx.ellipse(90, 330, 40, 20, Math.PI / 2, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(240, 330, 40, 20, -Math.PI / 2, 0, Math.PI * 2); ctx.fill();
+
+        // 15-16. Patas traseras
+        ctx.beginPath(); ctx.arc(120, 415, 25, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(210, 415, 25, 0, Math.PI * 2); ctx.fill();
     }
-};
+
+    // --- FUNCIÓN 2: PERRO ---
+    function dibujarPerro() {
+        const cafe = "#8B5A2B";
+
+        // 17. Cuerpo
+        ctx.fillStyle = cafe;
+        ctx.strokeStyle = "black";
+        ctx.fillRect(320, 300, 140, 80);
+        ctx.strokeRect(320, 300, 140, 80);
+
+        // 18. Cabeza
+        ctx.fillRect(320, 200, 100, 100);
+        ctx.strokeRect(320, 200, 100, 100);
+
+        // 19-20. Orejas Triangulares
+        ctx.fillStyle = cafe;
+        ctx.beginPath();
+        ctx.moveTo(320, 200); ctx.lineTo(285, 230); ctx.lineTo(285, 140); 
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(420, 200); ctx.lineTo(455, 230); ctx.lineTo(455, 140);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+
+        // 21. Hocico
+        ctx.fillStyle = "#EEDCBB";
+        ctx.fillRect(345, 255, 50, 45);
+        ctx.strokeRect(345, 255, 50, 45);
+
+        // 22-25. Ojos
+        ctx.fillStyle = "white";
+        ctx.beginPath(); ctx.arc(345, 235, 15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.arc(395, 235, 15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = "black";
+        ctx.beginPath(); ctx.arc(345, 235, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(395, 235, 6, 0, Math.PI * 2); ctx.fill();
+
+        // 26. Nariz
+        ctx.beginPath(); ctx.arc(370, 270, 9, 0, Math.PI * 2); ctx.fill();
+
+        // 27-30. Patas
+        ctx.fillStyle = cafe;
+        ctx.fillRect(320, 380, 20, 80); ctx.strokeRect(320, 380, 20, 80);
+        ctx.fillRect(350, 380, 20, 80); ctx.strokeRect(350, 380, 20, 80);
+        ctx.fillRect(410, 380, 20, 80); ctx.strokeRect(410, 380, 20, 80);
+        ctx.fillRect(440, 380, 20, 80); ctx.strokeRect(440, 380, 20, 80);
+
+        // 31. Cola
+        ctx.fillRect(460, 230, 25, 80); ctx.strokeRect(460, 230, 25, 80);
+        
+        // 32. Detalle circular en cuerpo
+        ctx.beginPath(); ctx.arc(430, 340, 20, 0, Math.PI * 2); ctx.stroke();
+    }
+
+    dibujarPanda();
+    dibujarPerro();
+});
